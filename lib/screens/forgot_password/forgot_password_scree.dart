@@ -52,6 +52,7 @@ class ForgotPassword extends StatelessWidget {
                           builder: (context) => const LoginScreen(),
                         ),
                       ),
+
                     );
               },
               child: const Text('Reset Password')),

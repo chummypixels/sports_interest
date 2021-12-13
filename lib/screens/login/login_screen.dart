@@ -38,6 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: EdgeInsets.only(left: 40, right: 40),
             child: Form(
               key: _formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -58,6 +59,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: const InputDecoration(
                       labelText: 'Enter your email',
                     ),
+                    validator: (value) {
+                      final pattern =
+                          r'(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)';
+                      final regExp = RegExp(pattern);
+
+                      if (value!.isEmpty) {
+                        return 'Enter an email';
+                      } else if (!regExp.hasMatch(value)) {
+                        return 'Enter a valid email';
+                      } else {
+                        return null;
+                      }
+                    },
                     // validator: (value){
                     //   if(value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)){
                     //     return 'Please enter correct email';
@@ -74,6 +88,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _passwordController,
                     decoration:
                         const InputDecoration(labelText: 'Enter your password'),
+                    validator: (value) {
+                      if (value!.length < 7) {
+                        return 'Password must be at least 7 characters long';
+                      } else {
+                        return null;
+                      }
+                    },
                     // validator: (value){
                     //   if(value!.isEmpty || !RegExp(r'^[a-z A-Z]+$').hasMatch(value!)){
                     //     return 'Please enter valid password';
@@ -88,14 +109,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       ElevatedButton(
                         onPressed: () async {
-                          //Here, we implement the login functionality
-                          await authService.signInWithEmailAndPassword(
-                              _emailController.text, _passwordController.text);
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OnBoardingScreen()));
+                          final isValid = _formKey.currentState!.validate();
+
+                          if (isValid) {
+                            _formKey.currentState!.save();
+                            //Here, we implement the login functionality
+                            await authService.signInWithEmailAndPassword(
+                                _emailController.text,
+                                _passwordController.text);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const OnBoardingScreen()));
+                          }
                         },
                         child: const Text('Login'),
                       ),
