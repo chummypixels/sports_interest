@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "950711779885",
+    "project_id": "sports-interest-64f51",
+    "storage_bucket": "sports-interest-64f51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950711779885:android:cbbfa07a52eb5769da6ea4",
+        "android_client_info": {
+          "package_name": "com.chummypixels.flutter_sports_interest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950711779885-it3j5ib07jpa9us1e25skpjk8t6gmv6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUmvlBas4h23w30CVW45PDWafGr_AhNCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950711779885-it3j5ib07jpa9us1e25skpjk8t6gmv6o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
