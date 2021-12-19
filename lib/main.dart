@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         //home: const OnBoardingScreen()
         initialRoute: '/',
         routes: {
-          '/': (context) => const LoginScreen(),
+          '/': (context) => const OnBoardingScreen(),
           '/home': (context) => const HomeScreen(),
           '/register': (context) => const RegisterScreen(),
           '/profile': (context) => const ProfileScreen(),
